@@ -13,7 +13,7 @@ const SignOut = () => {
   useEffect(() => {
     dispatch(signOut())
       .then(unwrapResult)
-      .then(res => navigate("/"))
+      .then((res) => window.location.replace('/'));
   }, [])
 
   return (

@@ -1,11 +1,20 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './AppBar.css';
-import { RootState } from '../app/store';
+import { AppDispatch, RootState } from '../app/store';
 import { useNavigate } from 'react-router-dom';
+import { signOut } from '../features/currentUserSlice';
+import { unwrapResult } from '@reduxjs/toolkit';
 
 const AppBar = () => {
   const state = useSelector((state: RootState) => state.currentUserState);
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+
+  const onSignOutClicked = () => {
+    dispatch(signOut());
+    // .then(unwrapResult)
+    // .then((res) => window.location.replace('/'));
+  };
 
   let componentToRender = (
     <>
@@ -20,7 +29,7 @@ const AppBar = () => {
   );
   if (state.currentUser) {
     componentToRender = (
-      <button className="navbar__button" onClick={(e) => navigate('/signout')}>
+      <button className="navbar__button" onClick={onSignOutClicked}>
         Sign Out
       </button>
     );

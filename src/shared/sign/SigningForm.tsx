@@ -26,7 +26,7 @@ const SigningForm = ({ action }: Sign) => {
     if (action === SIGN_UP_ACTION) {
       dispatch(signUp({ email, password }))
         .then(unwrapResult)
-        .then((res) => navigate('/'))
+        .then((res) => window.location.replace("/"))
         .catch((obj) => {
           if (obj.errors instanceof Array<ResponseError>) {
             setErrors(obj.errors);
@@ -35,7 +35,7 @@ const SigningForm = ({ action }: Sign) => {
     } else if (action === SIGN_IN_ACTION) {
       dispatch(signIn({ email, password }))
         .then(unwrapResult)
-        .then((res) => navigate('/'))
+        .then((res) => window.location.replace('/'))
         .catch((obj) => {
           if (obj.errors instanceof Array<ResponseError>) {
             setErrors(obj.errors);
