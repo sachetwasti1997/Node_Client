@@ -1,10 +1,15 @@
-import SigningForm from '../shared/sign/SigningForm';
+import SigningForm from "../components/SigningForm";
 
 const SignUp = () => {
   return (
-    <>
-      <SigningForm action="Sign Up" url="/api/users/signup" />
-    </>
+    <div className="card bg-light-blue-500">
+      <div className="card-header">
+        <h3 className="card-title">Sign Up</h3>
+      </div>
+      <div className="card-body">
+        <SigningForm action="Sign Up" url="/api/users/signup" />
+      </div>
+    </div>
   );
 };
 

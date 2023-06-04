@@ -1,9 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
-import './AppBar.css';
-import { AppDispatch, RootState } from '../app/store';
-import { useNavigate } from 'react-router-dom';
-import { signOut } from '../features/currentUserSlice';
-import { unwrapResult } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from "react-redux";
+import "./AppBar.css";
+import { AppDispatch, RootState } from "../app/store";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "../features/currentUserSlice";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 const AppBar = () => {
   const state = useSelector((state: RootState) => state.currentUserState);
@@ -17,31 +17,63 @@ const AppBar = () => {
   };
 
   let componentToRender = (
-    <>
-      <button className="navbar__button" onClick={(e) => navigate('/signin')}>
-        Sign In
-      </button>
-      <span className="navbar__space"></span>
-      <button className="navbar__button" onClick={(e) => navigate('/signup')}>
-        Sign Up
-      </button>
-    </>
+    <ul className="flex items-center gap-[0.5vw]">
+      <li>
+        <button
+          className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]"
+          onClick={(e) => navigate("/signin")}
+        >
+          Sign In
+        </button>
+      </li>
+      <li>
+        <button
+          className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]"
+          onClick={(e) => navigate("/signup")}
+        >
+          Sign Up
+        </button>
+      </li>
+    </ul>
   );
   if (state.currentUser) {
     componentToRender = (
-      <button className="navbar__button" onClick={onSignOutClicked}>
-        Sign Out
-      </button>
+      <ul className="flex items-center gap-[0.5vw]">
+        <li>
+          <button
+            className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]"
+            // onClick={}
+          >
+            My Orders
+          </button>
+        </li>
+        <li>
+          <button
+            className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]"
+            onClick={(e) => navigate("/create/ticket")}
+          >
+            Sell
+          </button>
+        </li>
+        <li>
+          <button
+            className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]"
+            onClick={onSignOutClicked}
+          >
+            Sign Out
+          </button>
+        </li>
+      </ul>
     );
   }
   return (
-    <nav className="navbar">
-      <div className="navbar__left">
-        <button className="nav__header" onClick={(e) => navigate('/')}>
-          <h4>Tickets</h4>
-        </button>
+    <nav className="bg-white flex justify-between items-center mx-auto h-[6%] px-5">
+      <div>
+        <div className="nav__header" onClick={(e) => navigate("/")}>
+          <h1 className="hover:text-gray-500">Tickets</h1>
+        </div>
       </div>
-      <div className="navbar__right">{componentToRender}</div>
+      <div>{componentToRender}</div>
     </nav>
   );
 };

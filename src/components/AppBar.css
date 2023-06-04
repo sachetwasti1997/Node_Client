@@ -33,6 +33,7 @@
   border: none;
   color: #333;
   outline: none;
+  cursor: pointer;
 }
 
 .nav__header:hover{

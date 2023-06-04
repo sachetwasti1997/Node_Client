@@ -1,5 +1,5 @@
-import { SerializedError } from '@reduxjs/toolkit';
-import { AxiosError } from 'axios';
+import { SerializedError } from "@reduxjs/toolkit";
+import { AxiosError } from "axios";
 
 export type CurrentUser = {
   id: string;
@@ -13,5 +13,18 @@ export type SignRequest = {
 };
 
 export class ResponseError {
-    constructor(public message: string, public field?: string){}
+  constructor(public message: string, public field?: string) {}
 }
+
+export type TicketRequest = {
+  title: string;
+  price: string;
+}
+
+export type TicketCreatedResp = {
+  title: string;
+  price: string;
+  userId: string;
+  version: number;
+  id: string;
+};
