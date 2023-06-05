@@ -4,7 +4,7 @@ import {
   createAsyncThunk,
   SerializedError,
 } from '@reduxjs/toolkit';
-import { CurrentUser, SignRequest, ResponseError } from '../type';
+import { CurrentUser, SignRequest, ResponseError, SignUpRequest } from '../type';
 import axios, { AxiosError } from 'axios';
 
 interface CurrentUserState {
@@ -27,7 +27,7 @@ export const fetchCurrentUser = createAsyncThunk(
 
 export const signUp = createAsyncThunk(
   'signUp',
-  async (req: SignRequest, { rejectWithValue }) => {
+  async (req: SignUpRequest, { rejectWithValue }) => {
     try {
       const res = await axios.post('/api/users/signup', req);
       return res.data;

@@ -10,6 +10,7 @@ import { ResponseError } from "../type";
 const TicketForm = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
   const [errors, setErrors] =
     useState<Array<{ message: string; field?: string }>>();
   const dispatch = useDispatch<AppDispatch>();
@@ -18,8 +19,9 @@ const TicketForm = () => {
   const onSubmit = async (e: React.FormEvent): Promise<any> => {
     e.preventDefault();
     console.log(`Submitting form with ${title} ${price}`);
-    dispatch(createTicket({ title, price }))
+    dispatch(createTicket({ description, title, price }))
       .then(unwrapResult)
+      .then((res) => navigate("/"))
       .catch((obj) => {
         console.log(obj);
         if (obj.errors instanceof Array<ResponseError>) {
@@ -29,7 +31,7 @@ const TicketForm = () => {
   };
 
   return (
-    <form className="w-full max-w-prose ml-[19%]" onSubmit={onSubmit}>
+    <form className="w-full max-w-prose ml-[19%] w-[75%]" onSubmit={onSubmit}>
       <div className="flex mb-6">
         <div className="md:w-1/3">
           <label
@@ -71,6 +73,26 @@ const TicketForm = () => {
           />
         </div>
       </div>
+      <div className="md:flex md:items-center mb-6">
+        <div className="md:w-1/3">
+          <label
+            className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            htmlFor="description"
+          >
+            Description
+          </label>
+        </div>
+        <div className="md:w-2/3">
+          <textarea
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 h-[200px]"
+            id="description"
+            name="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+      </div>
       {errors && errors.length > 0 && (
         <div role="alert" className="ml-[25%] my-[2%]">
           <div className="bg-red-500 text-white font-bold rounded-t px-2 py-2">
@@ -78,7 +100,9 @@ const TicketForm = () => {
           </div>
           <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
             {errors.map((error) => (
-              <p className="error-message" key={error.message}>{error.message}</p>
+              <p className="error-message" key={error.message}>
+                {error.message}
+              </p>
             ))}
           </div>
         </div>

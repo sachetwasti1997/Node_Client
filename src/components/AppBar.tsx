@@ -67,7 +67,7 @@ const AppBar = () => {
     );
   }
   return (
-    <nav className="bg-white flex justify-between items-center mx-auto h-[6%] px-5">
+    <nav className="bg-white flex justify-between items-center mx-auto h-[53px] px-5">
       <div>
         <div className="nav__header" onClick={(e) => navigate("/")}>
           <h1 className="hover:text-gray-500">Tickets</h1>

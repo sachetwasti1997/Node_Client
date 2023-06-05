@@ -24,14 +24,14 @@ const SigningForm = ({ action }: Sign) => {
   const onSubmit = async (e: React.FormEvent): Promise<any> => {
     e.preventDefault();
     if (action === SIGN_UP_ACTION) {
-      dispatch(signUp({ email, password }))
-        .then(unwrapResult)
-        .then((res) => window.location.replace("/"))
-        .catch((obj) => {
-          if (obj.errors instanceof Array<ResponseError>) {
-            setErrors(obj.errors);
-          }
-        });
+      // dispatch(signUp({ email, password }))
+      //   .then(unwrapResult)
+      //   .then((res) => window.location.replace("/"))
+      //   .catch((obj) => {
+      //     if (obj.errors instanceof Array<ResponseError>) {
+      //       setErrors(obj.errors);
+      //     }
+      //   });
     } else if (action === SIGN_IN_ACTION) {
       dispatch(signIn({ email, password }))
         .then(unwrapResult)

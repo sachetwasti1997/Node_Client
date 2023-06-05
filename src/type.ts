@@ -12,6 +12,13 @@ export type SignRequest = {
   password: string;
 };
 
+export type SignUpRequest = {
+  email: string
+  password: string
+  firstName: string
+  lastName: string
+}
+
 export class ResponseError {
   constructor(public message: string, public field?: string) {}
 }
@@ -19,6 +26,7 @@ export class ResponseError {
 export type TicketRequest = {
   title: string;
   price: string;
+  description: string;
 }
 
 export type TicketCreatedResp = {

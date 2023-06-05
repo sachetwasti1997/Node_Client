@@ -1,3 +1,4 @@
+import { SignUpForm } from "../components/SignUpForm";
 import SigningForm from "../components/SigningForm";
 
 const SignUp = () => {
@@ -7,7 +8,7 @@ const SignUp = () => {
         <h3 className="card-title">Sign Up</h3>
       </div>
       <div className="card-body">
-        <SigningForm action="Sign Up" url="/api/users/signup" />
+        <SignUpForm />
       </div>
     </div>
   );
