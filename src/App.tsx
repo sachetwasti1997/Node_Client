@@ -1,15 +1,17 @@
+import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import Home from "./pages/Home";
+const SignIn = React.lazy(() => import("./pages/SignIn"));
+const SignUp = React.lazy(() => import("./pages/SignUp"));
+const Home = React.lazy(() => import("./pages/Home"));
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentUser } from "./features/currentUserSlice";
 import { AppDispatch } from "./app/store";
-import SignOut from "./pages/SignOut";
-import AppBar from "./components/AppBar";
+const AppBar = React.lazy(() => import( "./components/AppBar"));
 import { CreateTicket } from "./pages/CreateTicket";
+import TicketPurchasePage from "./pages/TicketPurchasePage";
+const TicketList = React.lazy(() => import("./pages/TicketsList"));
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -23,11 +25,54 @@ const App = () => {
       <BrowserRouter>
         <AppBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signout" element={<SignOut />} />
-          <Route path="/create/ticket" element={<CreateTicket />} />
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Home />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <SignIn />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <SignUp />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/my-tickets"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <TicketList />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/create/ticket"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <CreateTicket />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/ticket"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <TicketPurchasePage />
+              </Suspense>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 const Home = () => {
   const state = useSelector<RootState>(state => state.currentUserState.currentUser)
   return (
-    state ? <p>You are logged In!</p>:<p>You are NOT logged In!</p>
+    <div>
+      {state ? <p>You are logged In!</p>:<p>You are NOT logged In!</p>}
+    </div>
   );
 };
 
