@@ -37,7 +37,7 @@ const SigningForm = ({ action }: Sign) => {
         .then(unwrapResult)
         .then((res) => window.location.replace("/"))
         .catch((obj) => {
-          if (obj.errors instanceof Array<ResponseError>) {
+          if (obj.errors instanceof Array) {
             setErrors(obj.errors);
           }
         });

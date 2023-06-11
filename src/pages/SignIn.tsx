@@ -1,5 +1,4 @@
 import SigningForm from "../components/SigningForm";
-import { TicketCard } from "../components/TicketCard";
 
 const SignIn = () => {
   return (
@@ -12,7 +11,6 @@ const SignIn = () => {
           <SigningForm action="Sign In" url="/api/users/signin" />
         </div>
       </div>
-      <TicketCard/>
     </>
   );
 };

@@ -21,7 +21,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="font-[Poppins] bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen">
+    <div className="bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen">
       <BrowserRouter>
         <AppBar />
         <Routes>
@@ -66,7 +66,7 @@ const App = () => {
             }
           />
           <Route
-            path="/ticket"
+            path="/ticket/:ticketId"
             element={
               <Suspense fallback={<div>Loading...</div>}>
                 <TicketPurchasePage />

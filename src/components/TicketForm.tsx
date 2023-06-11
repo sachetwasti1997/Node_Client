@@ -24,7 +24,7 @@ const TicketForm = () => {
       .then((res) => navigate("/"))
       .catch((obj) => {
         console.log(obj);
-        if (obj.errors instanceof Array<ResponseError>) {
+        if (obj.errors instanceof Array) {
           setErrors(obj.errors);
         }
       });

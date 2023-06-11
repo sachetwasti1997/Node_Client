@@ -4,6 +4,7 @@ import { AppDispatch, RootState } from "../app/store";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "../features/currentUserSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
+import TicketLogo from "../shared/ticket-logo.png";
 
 const AppBar = () => {
   const state = useSelector((state: RootState) => state.currentUserState);
@@ -69,9 +70,7 @@ const AppBar = () => {
   return (
     <nav className="bg-white flex justify-between items-center mx-auto h-[53px] px-5">
       <div>
-        <div className="nav__header" onClick={(e) => navigate("/")}>
-          <h1 className="hover:text-gray-500">Tickets</h1>
-        </div>
+        <img className="w-30 h-16" src={TicketLogo} onClick={(e) => navigate("/")} />
       </div>
       {state.currentUser && <div>{signedInComponent}</div>}
       <div>{componentToRender}</div>
