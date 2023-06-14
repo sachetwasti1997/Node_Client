@@ -37,3 +37,12 @@ export type TicketResp = {
   id: string;
   description: string;
 };
+
+export type Order = {
+  id: string;
+  userId: string;
+  status: string;
+  expiresAt: Date;
+  ticket: TicketResp;
+  version: number;
+};

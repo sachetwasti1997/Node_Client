@@ -11,6 +11,8 @@ import { AppDispatch } from "./app/store";
 const AppBar = React.lazy(() => import( "./components/AppBar"));
 import { CreateTicket } from "./pages/CreateTicket";
 import TicketPurchasePage from "./pages/TicketPurchasePage";
+const MyOrders = React.lazy(() => import("./pages/MyOrders"));
+const TicketPayPage = React.lazy(() => import("./pages/TicketPayPage"));
 const TicketList = React.lazy(() => import("./pages/TicketsList"));
 
 const App = () => {
@@ -29,7 +31,7 @@ const App = () => {
             path="/"
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <Home />
+                <TicketList />
               </Suspense>
             }
           />
@@ -50,14 +52,6 @@ const App = () => {
             }
           />
           <Route
-            path="/my-tickets"
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <TicketList />
-              </Suspense>
-            }
-          />
-          <Route
             path="/create/ticket"
             element={
               <Suspense fallback={<div>Loading...</div>}>
@@ -70,6 +64,22 @@ const App = () => {
             element={
               <Suspense fallback={<div>Loading...</div>}>
                 <TicketPurchasePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/order/:id"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <TicketPayPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/orders"
+            element={ 
+              <Suspense fallback={ <div>Loading...</div>}>
+                <MyOrders/>
               </Suspense>
             }
           />

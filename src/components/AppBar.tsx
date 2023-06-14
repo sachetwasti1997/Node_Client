@@ -12,20 +12,15 @@ const AppBar = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const onSignOutClicked = () => {
-    dispatch(signOut());
-    // .then(unwrapResult)
-    // .then((res) => window.location.replace('/'));
+    dispatch(signOut())
+      .then(unwrapResult)
+      .then((res) => window.location.replace('/'));
   };
 
   const signedInComponent = (
     <ul className="flex items-center gap-[4vw]">
       <li>
-        <Link className="hover:text-gray-500" to="/my-tickets">
-          My Tickets
-        </Link>
-      </li>
-      <li>
-        <Link className="hover:text-gray-500" to="/">
+        <Link className="hover:text-gray-500" to="/orders">
           My Orders
         </Link>
       </li>

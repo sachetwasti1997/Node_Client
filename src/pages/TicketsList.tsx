@@ -12,7 +12,7 @@ const TicketList = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchTickets());
+    if (stateR.length === 0)dispatch(fetchTickets());
   }, []);
 
   console.log(stateR);
