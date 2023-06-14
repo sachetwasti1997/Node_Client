@@ -12,7 +12,7 @@ const MyOrders = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    if (!orders.myOrders.length)dispatch(fetchOrders());
+    dispatch(fetchOrders());
   }, []);
 
   return (

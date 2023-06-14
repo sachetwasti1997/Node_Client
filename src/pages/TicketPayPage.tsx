@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Order, TicketResp } from "../type";
 import { useEffect } from "react";
 import Counter from "../components/Counter";
@@ -8,6 +8,7 @@ import axios from "axios";
 const TicketPayPage = () => {
 
   const location = useLocation();
+  const navigate = useNavigate()
   const {
     order,
     ticket,
@@ -18,7 +19,11 @@ const TicketPayPage = () => {
     await axios.post("/api/payments", {
       token: id,
       orderId
-    }).then(res => console.log(res));
+    }).then(res => navigate("/orders", {
+      state: {
+        paymentSuccess: true
+      }
+    }));
   }
 
   const currentDate = new Date();
